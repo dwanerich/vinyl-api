@@ -1,0 +1,42 @@
+<%= form_with(model: vinyl) do |form| %>
+  <% if vinyl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vinyl.errors.count, "error") %> prohibited this vinyl from being saved:</h2>
+
+      <ul>
+        <% vinyl.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.text_field :artist , class: 'form-control' , placeholder: "Artist" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :title , class: 'form-control' , placeholder: "Title" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :genre , class: 'form-control' , placeholder: "Genre" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :year , class: 'form-control' , placeholder: "Year" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.number_field :user_id, id: :vinyl_user_id, class: 'form-control' , value: current_user.id, type: :hidden %>
+  </div>
+  
+  <br>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-success' %>
+    
+  </div>
+
+  <br>
+<% end %>

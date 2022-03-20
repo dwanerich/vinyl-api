@@ -1,0 +1,40 @@
+
+<h1>Vinyl Collection</h1>
+<br>
+
+<table class='table table-hover'>
+  <thead class='table-dark'>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Year</th>
+      <th>User Id</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vinyls.each do |vinyl| %>
+
+      <% if vinyl.user === current_user %>
+        <tr>
+          <td>
+          <%= link_to vinyl.artist, vinyl %>
+          </td>
+          <td><%= vinyl.title %></td>
+          <td><%= vinyl.genre %></td>
+          <td><%= vinyl.year %></td>
+          <td><%= vinyl.user_id %></td>
+
+          <td><%= button_to 'Delete', vinyl, method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vinyl', new_vinyl_path , class: 'btn btn-success' %>

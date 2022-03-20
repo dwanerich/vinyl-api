@@ -1,0 +1,21 @@
+<br><br>
+
+<div class="jumbotron text-center card-header">
+  <h1 class="display-4"> <strong>Artist:</strong>
+  <%= @vinyl.artist %></h1>
+  <div class="card-body">
+    <h3 class="card-title">Title:
+  <%= @vinyl.title %></h3>
+
+  <hr>
+    <p class="lead"> <strong>Genre:</strong>
+  <%= @vinyl.genre %></p>
+  <p class="lead"><strong>Year:</strong>
+  <%= @vinyl.year %></p>
+    <a><%= link_to 'Edit', edit_vinyl_path(@vinyl) , class: 'btn btn-secondary btn-sm' %> <br> <br>
+
+    <%= button_to 'Delete', @vinyl, method: :delete, class: 'btn btn-outline-danger btn-sm', data: { confirm: 'Are you sure?' } %> <br>
+<%= link_to 'Back', vinyls_path , class: 'btn btn-dark btn-sm' %>
+</a>
+  </div>
+</div>

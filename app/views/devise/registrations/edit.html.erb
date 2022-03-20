@@ -1,0 +1,50 @@
+<div class="card text-center">
+  <div class="card-header">
+<h2>Edit Profile<%= resource_name.to_s.humanize %></h2>
+  </div>
+  <div class="card-body">
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+  </div>
+  <br>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field mp-3">
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "password (leave blank if
+    you don't want to change)" %>
+    <% if @minimum_password_length %>
+      <br />
+    <% end %>
+  </div>
+
+  <div class="field mp3">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control',
+    placeholder: " password confirmation (6 character minimum)" %>
+  </div>
+
+  <div class="field mp3">
+   <br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control', placeholder: "current password" %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Update", class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class: 'btn btn-danger',
+method: :delete %></p>
+
+<%= link_to "Back", :back %>
+    
+  </div>
+</div>
